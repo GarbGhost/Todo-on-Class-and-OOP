@@ -60,7 +60,7 @@ export class UserHandler {
           tasks: [],
           color: `rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(
             Math.random() * 255
-          )}, ${Math.floor(Math.random() * 255)}, 0.5)`
+          )}, ${Math.floor(Math.random() * 255)}, 0.5)`,
         });
         this.taskHandler.updateButtonState();
         this.clearInput();
@@ -73,12 +73,12 @@ export class UserHandler {
 
   deleteUser(objectName) {
     let indexFind = this._users.findIndex((el) => el.name === objectName);
-    if(this._selectedUser && this._selectedUser.name === objectName){
-      this._selectedUser = null
+    if (this._selectedUser && this._selectedUser.name === objectName) {
+      this._selectedUser = null;
     }
     if (indexFind !== -1) {
       this._users.splice(indexFind, 1);
-      this.taskHandler.setUser(this._selectedUser)
+      this.taskHandler.setUser(this._selectedUser);
       this.taskHandler.updateButtonState();
       this.storage.save(this._users);
       this.renderUserList();
@@ -122,7 +122,6 @@ export class UserHandler {
       deleteItem.addEventListener("click", (event) => {
         event.stopPropagation();
         this.deleteUser(obj.name);
-        
       });
       item.append(span, deleteItem);
       this.userList.append(item);

@@ -104,10 +104,9 @@ export class TaskHandler {
           "rounded-3"
         );
 
-        taskRemoveBtn.addEventListener("click" ,()=>{
-        this.deleteItem(objTask)
-
-        })
+        taskRemoveBtn.addEventListener("click", () => {
+          this.deleteItem(objTask);
+        });
 
         taskItemGroup.append(taskCheckBtn, taskSpan);
         taskItem.append(taskItemGroup, taskRemoveBtn);
@@ -117,13 +116,13 @@ export class TaskHandler {
   }
 
   deleteItem(objectTask) {
-
-    let indexFind = this._currentUser.tasks.findIndex((el) => el === objectTask);
+    let indexFind = this._currentUser.tasks.findIndex(
+      (el) => el === objectTask
+    );
     if (indexFind !== -1) {
       this._currentUser.tasks.splice(indexFind, 1);
-      this.setUser(this._currentUser)
+      this.setUser(this._currentUser);
       this.storage.save(this._users);
-
     }
   }
 
