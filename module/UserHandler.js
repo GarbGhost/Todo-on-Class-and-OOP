@@ -97,6 +97,7 @@ export class UserHandler {
         "mb-2",
         "me-3",
         "d-flex",
+        "justify-content-between",
         "align-items-center",
         "border",
         "border-info",
@@ -112,6 +113,7 @@ export class UserHandler {
       });
       item.style.width = "auto";
       item.style.cursor = "pointer";
+      item.style.minWidth = "100px";
       const span = document.createElement("span");
       span.classList.add("me-2");
       span.textContent = objName;

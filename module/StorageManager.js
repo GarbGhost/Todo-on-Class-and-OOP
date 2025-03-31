@@ -2,7 +2,6 @@ export class StorageManager {
   constructor(key) {
     this.key = key;
   }
-
   save(data) {
     localStorage.setItem(this.key, JSON.stringify(data));
   }

@@ -34,7 +34,7 @@ export class TaskHandler {
         this.alertCustom.classList.remove("d-none");
         this.alertCustom.textContent = !this._currentUser
           ? "Выберите пользователя"
-          : "Введите дело";
+          : "Добавьте Задачу";
         setTimeout(() => {
           this.alertCustom.textContent = "";
           this.alertCustom.classList.add("d-none");

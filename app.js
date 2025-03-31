@@ -1,3 +1,6 @@
 import { Container } from "./module/Container.js";
-let todoList = new Container();
-
+try {
+ new Container();
+} catch (error) {
+  console.error("Ошибка при запуске приложения:", error);
+}
