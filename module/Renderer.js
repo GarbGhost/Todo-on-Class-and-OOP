@@ -9,14 +9,26 @@ export class Renderer {
       text: "TODO",
       classes: ["text-muted", "text-center"],
     });
-    const formAddUser = this.createForm(["d-flex", "gap-2", "mb-3"]);
+    const formAddUser = this.createForm([
+      "d-flex",
+      "d-lg-flex",
+      "flex-column",
+      "flex-lg-row",
+      "gap-2",
+      "mb-3",
+    ]);
     const inputAddUser = this.createInput("text", "Введите пользователя", [
       "form-control",
-      "w-25",
+      "w-100",
+      "w-lg-25",
     ]);
     const addUserBtn = this.createButton("Добавить пользователя", [
       "btn",
       "btn-warning",
+      "mt-2",
+      "mt-lg-0",
+      "w-100",
+      "w-lg-auto",
     ]);
     const userList = this.createElement("ul", {
       classes: ["d-flex", "flex-wrap"],
@@ -24,16 +36,28 @@ export class Renderer {
     const userBlockNote = this.createElement("div", {
       classes: ["d-flex", "flex-column"],
     });
-    const formUserNote = this.createForm(["d-flex", "gap-2", "mb-3"]);
+    const formUserNote = this.createForm([
+      "d-flex",
+      "d-lg-flex",
+      "flex-column",
+      "flex-lg-row",
+      "gap-2",
+      "mb-3",
+    ]);
     const inputUserNote = this.createInput("text", "Введите дело", [
       "form-control",
-      "w-25",
+      "w-100",
+      "w-lg-25",
       "align-self-start",
     ]);
     const buttonNote = this.createButton("Добавить задачу", [
       "btn",
       "btn-primary",
       "mb-3",
+      "mt-2",
+      "mt-lg-0",
+      "w-100",
+      "w-lg-auto",
     ]);
     const alertCustom = this.createElement("div", {
       classes: [
@@ -142,20 +166,41 @@ export class Renderer {
 
   renderTasks(tasks, userColor, onCheckChange, onDeleteClick) {
     const ul = this.createElement("ul", { classes: ["list-group", "gap-1"] });
-    tasks.forEach(task => {
-      const li = this.createElement("li", { classes: ["list-group-item", "rounded-pill", "d-flex", "justify-content-between", "align-items-center"] });
+    tasks.forEach((task) => {
+      const li = this.createElement("li", {
+        classes: [
+          "list-group-item",
+          "rounded-pill",
+          "d-flex",
+          "justify-content-between",
+          "align-items-center",
+        ],
+      });
       li.style.backgroundColor = userColor;
 
-      const span = this.createElement("span", { text: task.name.toUpperCase() });
-      if (task.completed) span.classList.add("text-decoration-line-through", "fst-italic");
+      const span = this.createElement("span", {
+        text: task.name.toUpperCase(),
+      });
+      if (task.completed)
+        span.classList.add("text-decoration-line-through", "fst-italic");
 
-      const group = this.createElement("div", { classes: ["d-flex", "gap-3", "align-items-center", "border-info"] });
+      const group = this.createElement("div", {
+        classes: ["d-flex", "gap-3", "align-items-center", "border-info"],
+      });
       const checkbox = this.createElement("input");
       checkbox.type = "checkbox";
       checkbox.checked = task.completed;
-      checkbox.addEventListener("change", () => onCheckChange(task, checkbox.checked));
+      checkbox.addEventListener("change", () =>
+        onCheckChange(task, checkbox.checked)
+      );
 
-      const deleteBtn = this.createButton("Удалить", ["btn", "btn-danger", "p-1", "btn-sm", "rounded-3"]);
+      const deleteBtn = this.createButton("Удалить", [
+        "btn",
+        "btn-danger",
+        "p-1",
+        "btn-sm",
+        "rounded-3",
+      ]);
       deleteBtn.addEventListener("click", () => onDeleteClick(task));
 
       group.append(checkbox, span);
